@@ -4,5 +4,10 @@
   "main": "index.js",
   "repository": "https://github.com/jgsheppa/Node.js-Meme-Scraper-UpLeveled-2020.git",
   "author": "James Sheppard",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "cheerio": "^1.0.0-rc.3",
+    "node-fetch": "^2.6.1"
+  }
 }
