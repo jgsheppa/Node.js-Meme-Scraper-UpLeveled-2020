@@ -9,7 +9,11 @@ const mainUrl = 'https://memegen.link/examples';
 axios
   .get(mainUrl)
   .then((response) => {
-    download(concatURLs(parseHTML(response.data)));
+    download(
+      concatURLs(
+        makeMeme(parseHTML(response.data), websiteMemeTexts, myMemeTexts),
+      ),
+    );
   })
   .catch((err) => {
     console.log(err);
@@ -80,3 +84,37 @@ const concatURLs = (array) => {
   }
   return urlArray;
 };
+
+const makeMeme = (urls, webText, myText) => {
+  let newUrls = [];
+  for (let i = 0; i < webText.length; i++) {
+    newUrls.push(urls[i].replace(webText[i], myText[i]));
+  }
+  return newUrls;
+};
+
+const websiteMemeTexts = [
+  'your_text/goes_here',
+  'your_text/goes_here',
+  `i_don't_know_what_this_meme_is_for/and_at_this_point_i'm_too_afraid_to_ask`,
+  `your_text/goes_here`,
+  `it's_an_older_meme_sir/but_it_checks_out`,
+  `_/aliens`,
+  `and_then_i_said/the_exam_will_only_contain_what_we've_covered_in_lectures`,
+  `at_least/you_tried`,
+  `gets_iced_coffee/in_the_winter`,
+  `baby,_you've_got_a_stew_going!`,
+];
+
+const myMemeTexts = [
+  `Kiss_my/robot_ass`,
+  `This_is_Bobby/he_does_drugs`,
+  `This_morning_I_woke_up/and_crapped_my_pants`,
+  `Yes/that_goat_is_my_wife`,
+  `One_day/an_A-wing_will_kill_me`,
+  `Thiiiiiiissss/Biiiiiiiig`,
+  `Reagan/sucks`,
+  `Imma_eat/you`,
+  `I_found_the/POPPIES`,
+  `Baby,_you_just_blew_yourself`,
+];
