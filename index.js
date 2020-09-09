@@ -58,9 +58,3 @@ const concatURLs = (array) => {
   }
   return urlArray;
 };
-
-/*const downloadImages = (imageArray) => {
-  for (let i = 0; i < 4; i++) {
-    download(imageArray[i]);
-  }
-};*/
