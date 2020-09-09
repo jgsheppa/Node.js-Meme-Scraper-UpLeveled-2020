@@ -14,12 +14,15 @@ axios
     console.log(err);
   });
 
+/* Parses HTML and returns an array of 
+the attribute src within a given class */
 const parseHTML = (html) => {
   const $ = cheerio.load(html);
   const urlMeme = $('.meme-img');
   return createMemeArray(urlMeme);
 };
 
+// Creates array using object of information from website
 const createMemeArray = (meme) => {
   let memeArray = [];
   for (let i = 0; i < 10; i++) {
@@ -28,6 +31,8 @@ const createMemeArray = (meme) => {
   return memeArray;
 };
 
+/* Downloads images with URLs and asigns 
+unique names to .jpg files */
 async function download(concatArray) {
   const nameArray = [
     'bender',
@@ -50,6 +55,7 @@ async function download(concatArray) {
   }
 }
 
+// Concatentates unique path of images to the main URL
 const concatURLs = (array) => {
   let urlArray = [];
   const baseUrl = 'https://api.memegen.link/images';
