@@ -2,7 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const fetch = require('node-fetch');
-const cliProgress = require('cli-progress');
+const generate = require('project-name-generator');
 
 const mainUrl = 'https://memegen.link/examples';
 
@@ -47,10 +47,21 @@ async function download(concatArray) {
     'biw',
     'stew',
   ];
+
+  //Writes name of new directory and creates it
+  const newFileName = generate().dashed;
+  fs.mkdir(`./${newFileName}`, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(`New directory established, beginning download.`);
+    }
+  });
+
   for (let i = 0; i < concatArray.length; i++) {
     const response = await fetch(concatArray[i]);
     const buffer = await response.buffer();
-    fs.writeFile(`./memes/${nameArray[i]}.jpg`, buffer, () => {
+    fs.writeFile(`./${newFileName}/${nameArray[i]}.jpg`, buffer, () => {
       if (i < 9) {
         console.log('Downloading...');
       } else if (i === 9) {
