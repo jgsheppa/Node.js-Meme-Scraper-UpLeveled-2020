@@ -10,7 +10,6 @@ const mainUrl = 'https://memegen.link/examples';
 //in order to create custom memes
 const websiteMemeTexts = [
   'your_text/goes_here',
-  'your_text/goes_here',
   `i_don't_know_what_this_meme_is_for/and_at_this_point_i'm_too_afraid_to_ask`,
   `your_text/goes_here`,
   `it's_an_older_meme_sir/but_it_checks_out`,
@@ -19,10 +18,10 @@ const websiteMemeTexts = [
   `at_least/you_tried`,
   `gets_iced_coffee/in_the_winter`,
   `baby,_you've_got_a_stew_going!`,
+  'your_text/goes_here',
 ];
 
 const myMemeTexts = [
-  `Kiss_my/robot_ass`,
   `This_is_Bobby/he_does_drugs`,
   `This_morning_I_woke_up/and_crapped_my_pants`,
   `Yes/that_goat_is_my_wife`,
@@ -32,6 +31,7 @@ const myMemeTexts = [
   `Imma_eat/you`,
   `I_found_the/POPPIES`,
   `Baby,_you_just_blue_yourself`,
+  'Your_future/husband',
 ];
 
 axios
@@ -47,8 +47,8 @@ axios
     console.log(err);
   });
 
-/* Parses HTML and returns an array of 
-the attribute src within a given class */
+// Parses HTML and returns an array of
+// the attribute src within a given class
 const parseHTML = (html) => {
   const $ = cheerio.load(html);
   const urlMeme = $('.meme-img');
@@ -64,8 +64,8 @@ const createMemeArray = (meme) => {
   return memeArray;
 };
 
-/* Downloads images with URLs and asigns 
-unique names to .jpg files */
+// Downloads images with URLs and asigns
+// unique names to .jpg files
 async function download(concatArray) {
   const nameArray = [
     'bender',
@@ -80,7 +80,7 @@ async function download(concatArray) {
     'stew',
   ];
 
-  //Writes name of new directory and creates it
+  // Writes name of new directory and creates it
   const newFileName = generate().dashed;
   fs.mkdir(`./${newFileName}`, function (err) {
     if (err) {
@@ -122,3 +122,16 @@ const makeMeme = (urls, webText, myText) => {
   }
   return newUrls;
 };
+
+/*const findMemeText = (urls) => {
+  let newUrls = [];
+  for (const value of urls) {
+    for (let j = 1; value.length; j++) {
+      if (value.charAt(i) === '/' && value.charAt(j) === '.') {
+        newUrls.push(value.slice(j));
+      }
+    }
+  }
+  return newUrls;
+};
+*/
