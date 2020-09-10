@@ -87,7 +87,7 @@ async function download(concatArray) {
       console.log(err);
     } else {
       console.log(
-        `New directory, ${newFileName}, established, beginning download.`,
+        `New folder, ${newFileName}, established, beginning download.`,
       );
     }
   });
