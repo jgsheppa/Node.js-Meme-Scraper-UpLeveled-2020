@@ -1,0 +1,31 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: black;
+  font: Helvetica Neue, sans serif;
+  margin: 0;
+  min-height: 100%;
+  display: grid;
+}
+
+header {
+  font-size: 20px;
+  font-weight: bold;
+  justify-content: center;
+  padding: 12px;
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.row {
+  display: grid;
+  width: 13%;
+  margin-left: 100px;
+  margin-top: 30px;
+}

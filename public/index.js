@@ -82,6 +82,7 @@ async function download(concatArray) {
 
   // Writes name of new directory and creates it
   const newFileName = generate().dashed;
+  //Saves images to new directory
   fs.mkdir(`./${newFileName}`, function (err) {
     if (err) {
       console.log(err);
@@ -96,6 +97,13 @@ async function download(concatArray) {
     const response = await fetch(concatArray[i]);
     const buffer = await response.buffer();
     fs.writeFile(`./${newFileName}/${nameArray[i]}.jpg`, buffer, () => {
+      if (i < 9) {
+        console.log('Downloading...');
+      } else if (i === 9) {
+        console.log('Finished!');
+      }
+    });
+    fs.writeFile(`./public/memes/${nameArray[i]}.jpg`, buffer, () => {
       if (i < 9) {
         console.log('Downloading...');
       } else if (i === 9) {
