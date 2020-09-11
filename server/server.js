@@ -2,14 +2,16 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const router = express.Router();
+const port = 8001;
 
-const url = '/Users/jamessheppard/Node.js-Meme-Scraper-UpLeveled-2020/public/';
-router.get(`${url}`, function (req, res) {
-  res.sendFile('index.html');
+router.get(`/`, function (req, res) {
+  res.sendFile('./public/index.html', {
+    root: '/Users/jamessheppard/Node.js-Meme-Scraper-UpLeveled-2020',
+  });
 });
 
-app.use('/', router);
+app.use(express.static('./public/memes'));
 
-const localHost = 8001;
-app.listen(process.env.port || `${localHost}`);
-console.log(`Server is running at localhost:${localHost}.`);
+app.use('/', router);
+app.listen(process.env.port || `${port}`);
+console.log(`Server is running at localhost:${port}.`);

@@ -23,15 +23,15 @@ const websiteMemeTexts = [
 
 const myMemeTexts = [
   `This_is_Bobby/he_does_drugs`,
-  `This_morning_I_woke_up/and_crapped_my_pants`,
-  `Yes/that_goat_is_my_wife`,
-  `One_day/a_starship_will_kill_me`,
-  `Thiiiiiiissss/Biiiiiiiig`,
-  `Reagan/sucks`,
+  `This_morning_I_woke_up/and_pooped_my_pants`,
+  `goat/life`,
+  `I_got_a_promotion/cause_my_boss_choked`,
+  `surfs_up/brah`,
+  `These_are_old_men/they_drink_whiskey`,
   `Imma_eat/you`,
-  `I_found_the/POPPIES`,
-  `Baby,_you_just_blue_yourself`,
-  'Your_future/husband',
+  `I_am_hungry`,
+  `Baby,_burger_king_is_the_best`,
+  'Your_future/friend',
 ];
 
 axios
@@ -96,13 +96,13 @@ async function download(concatArray) {
   for (let i = 0; i < concatArray.length; i++) {
     const response = await fetch(concatArray[i]);
     const buffer = await response.buffer();
-    fs.writeFile(`./${newFileName}/${nameArray[i]}.jpg`, buffer, () => {
+    /*fs.writeFile(`./${newFileName}/${nameArray[i]}.jpg`, buffer, () => {
       if (i < 9) {
         console.log('Downloading...');
       } else if (i === 9) {
         console.log('Finished!');
       }
-    });
+    });*/
     fs.writeFile(`./public/memes/${nameArray[i]}.jpg`, buffer, () => {
       if (i < 9) {
         console.log('Downloading...');
