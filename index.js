@@ -57,7 +57,7 @@ const parseHTML = (html) => {
 
 // Creates array using object of information from website
 const createMemeArray = (meme) => {
-  let memeArray = [];
+  const memeArray = [];
   for (let i = 0; i < 10; i++) {
     memeArray.push(meme[i].attribs.src);
   }
@@ -68,27 +68,27 @@ const createMemeArray = (meme) => {
 // unique names to .jpg files
 async function download(concatArray) {
   const nameArray = [
-    'bender',
-    'tenguy',
-    'afraid',
-    'apcr',
-    'older',
-    'aag',
-    'atis',
-    'tried',
-    'biw',
-    'stew',
+    'img1',
+    'img2',
+    'img3',
+    'img4',
+    'img5',
+    'img6',
+    'img7',
+    'img8',
+    'img9',
+    'img10',
   ];
 
   // Writes name of new directory and creates it
-  const newFileName = generate().dashed;
+  const newFolderName = generate().dashed;
   //Saves images to new directory
-  fs.mkdir(`./${newFileName}`, function (err) {
+  fs.mkdir(`./${newFolderName}`, function (err) {
     if (err) {
       console.log(err);
     } else {
       console.log(
-        `New folder, ${newFileName}, established, beginning download.`,
+        `New folder, ${newFolderName}, established, beginning download.`,
       );
     }
   });
@@ -96,7 +96,7 @@ async function download(concatArray) {
   for (let i = 0; i < concatArray.length; i++) {
     const response = await fetch(concatArray[i]);
     const buffer = await response.buffer();
-    fs.writeFile(`./${newFileName}/${nameArray[i]}.jpg`, buffer, () => {
+    fs.writeFile(`./${newFolderName}/${nameArray[i]}.jpg`, buffer, () => {
       if (i < 9) {
         console.log('Downloading...');
       } else if (i === 9) {
@@ -115,7 +115,7 @@ async function download(concatArray) {
 
 // Concatentates unique path of images to the main URL
 const concatURLs = (array) => {
-  let urlArray = [];
+  const urlArray = [];
   const baseUrl = 'https://api.memegen.link/images';
   for (let i = 0; i < array.length; i++) {
     urlArray.push(baseUrl + array[i].toString());
@@ -124,7 +124,7 @@ const concatURLs = (array) => {
 };
 
 const makeMeme = (urls, webText, myText) => {
-  let newUrls = [];
+  const newUrls = [];
   for (let i = 0; i < webText.length; i++) {
     newUrls.push(urls[i].replace(webText[i], myText[i]));
   }
